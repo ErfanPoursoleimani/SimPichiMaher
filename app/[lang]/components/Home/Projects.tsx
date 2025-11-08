@@ -1,12 +1,8 @@
 'use client'
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import DepthCarousel from "./components/DepthCarousel";
 import AnimatedBox from "@/components/ui/AnimatedBox";
-import { describe } from "node:test";
-import useScrollModifier from "@/hooks/useScrollModifier";
-import { useInView } from "@/hooks/useInView";
-
 
 interface CardData {
   id: number;
@@ -67,13 +63,12 @@ const Projects = () => {
         typeof window !== 'undefined' ? window.innerWidth : 0
     );
     
-    const { ref: refSection1, inView: section1InView } = useInView({ threshold: 0.3, triggerOnce: false, rootMargin: "0px" });
-    useScrollModifier(refSection1, section1InView)
-
-    useEffect(() => {
-        console.log(section1InView)
-        console.log(refSection1)
-    }, [section1InView, refSection1])
+/*     const { ref: refSection1, inView: section1InView } = useInView({ threshold: 0, triggerOnce: false, rootMargin: "0px" });
+    useScrollModifier(refSection1, section1InView, {landingPosition: "end"})
+    const { ref: refSection2, inView: section2InView } = useInView({ threshold: 0, triggerOnce: false, rootMargin: "0px" });
+    useScrollModifier(refSection2, section2InView, {landingPosition: "end"})
+    const { ref: refSection3, inView: section3InView } = useInView({ threshold: 0, triggerOnce: false, rootMargin: "0px" });
+    useScrollModifier(refSection3, section3InView, {landingPosition: "start"}) */
     
     useEffect(() => {
         const handleResize = () => {
@@ -94,20 +89,20 @@ const Projects = () => {
 
   return (
     <div className="relative top-[100vh] w-full flex flex-col items-center">
-        <div ref={refSection1} className="sticky top-0 min-h-screen bg-white flex flex-col items-center justify-center">
+        <div className="sticky top-0 min-h-screen bg-white flex flex-col items-center justify-center">
             <h2 className="text-[60px] font-extrabold text-(--theme)">نمونه کار ها</h2>
             <AnimatedBox animation="slideUp" config={{delay: 0.4}}>
                 <DepthCarousel cardData={cardData}/>
             </AnimatedBox>
         </div>
         <div className="min-h-max w-full mt-70">
-            <div className="sticky top-0 min-h-[300vh] max-md:min-h-[200vh] w-full">
+            <div /* ref={refSection1} */ className="sticky top-0 min-h-[300vh] max-md:min-h-[200vh] w-full">
                 <div className="sticky top-0 w-full max-h-screen flex flex-col items-center justify-center overflow-hidden">
                     <div
                     className={`absolute inset-0 w-full h-screen object-center bg-(--theme) text-white`}
                     style={{scale: 1 + mainScale * 0.05}}
                     >
-                        <div className="bg-white/0 min-w-full min-h-full absolute inset-0"></div>
+                        <div className="bg-white/0 w-full min-h-full absolute inset-0"></div>
                         <div className="text-center mb-16 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col gap-5">
                             <h1 className="text-3xl md:text-5xl font-bold mb-4">
                                 خدمات تخصصی سیم پیچی و تعمیرات
@@ -163,14 +158,14 @@ const Projects = () => {
                 ))}
             </div>
         </div>
-        <div className="min-h-max max-md:min-h-[550vh] w-full">
-            <div className="sticky top-0 min-h-[300vh] max-md:min-h-[150vh] w-full">
+        <div className="w-full">
+            <div /* ref={refSection2} */ className="sticky top-0 min-h-[300vh] max-md:min-h-[150vh] w-full">
                 <div className="sticky top-0 w-full max-h-screen flex flex-col items-center justify-center overflow-hidden">
                     <div
                     className={`absolute inset-0 w-full h-screen object-center bg-cover bg-(--theme) text-white`}
                     style={{scale: 1 + mainScale * 0.05}}
                     >
-                        <div className="bg-white/0 min-w-full min-h-full absolute inset-0"></div>
+                        <div className="bg-white/0 w-full min-h-full absolute inset-0"></div>
                         <div className="text-center mb-16 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col gap-5">
                             <h1 className="text-3xl md:text-5xl font-bold mb-4">
                                 مهندس میلاد غضنفری
@@ -183,8 +178,8 @@ const Projects = () => {
                     <div
                         className={`relative w-screen h-screen backdrop-blur-2xl bg-radial bg-(--theme)`}
                         style={{
-                            WebkitMaskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5300}px, black ${1110*mainScale - 5300}px)`,
-                            maskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5300}px, black ${1110*mainScale - 5300}px)`,
+                            WebkitMaskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5850}px, black ${1110*mainScale - 5850}px)`,
+                            maskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5850}px, black ${1110*mainScale - 5850}px)`,
                             WebkitMaskRepeat: 'no-repeat',
                             maskRepeat: 'no-repeat',
                         }}
@@ -193,7 +188,7 @@ const Projects = () => {
                     </div>
                 </div>
             </div>
-            <div className="sticky bg-white top-[300vh] min-h-screen w-full flex flex-col items-center justify-center">
+            <div /* ref={refSection3} */ className="sticky bg-white top-[300vh] min-h-screen w-full flex flex-col items-center justify-center">
 
             </div>
         </div>

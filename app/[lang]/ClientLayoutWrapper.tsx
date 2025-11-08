@@ -1,7 +1,5 @@
 'use client';
 import Lenis from 'lenis';
-// import 'lenis/dist/lenis.css';
-import { usePathname } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
 
 interface ClientLayoutWrapperProps {
@@ -9,7 +7,7 @@ interface ClientLayoutWrapperProps {
   lang: string;
 }
 
-export default function ClientLayoutWrapper({ children, lang }: ClientLayoutWrapperProps) {
+export default function ClientLayoutWrapper({ children }: ClientLayoutWrapperProps) {
 
   useEffect(() => {
     // Initialize Lenis with new autoRaf option

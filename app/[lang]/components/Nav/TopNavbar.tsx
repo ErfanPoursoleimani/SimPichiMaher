@@ -12,23 +12,16 @@ import LanguageDropdown from './components/LanguageDropdown';
 
 const TopNavbar: React.FC = () => {
   
-  const {isRTL, dict} = useSettingsStore()
-  const isActive = (path: string) => {
-    const current = usePathname()
-    return current === path;
-  };
+  const {isRTL, dict, lang} = useSettingsStore()
+  const current = usePathname()
 
   const navLinks = [
-    {id: 1, label: "خانه", selectedIcon: <TiHome className='text-[1rem]' />, href: `/`},
-    {id: 2, label: "نمونه کار", selectedIcon: <FaTreeCity className='text-[1rem]' />, href: `/samples`},
-    {id: 3, label: "خدمات", selectedIcon: <FaBookmark className='text-[1rem]' />, href: `/services`},
-    {id: 4, label: "درباره ما", selectedIcon: <MdTravelExplore className='text-[1rem]' />, href: `/about` },
-    {id: 5, label: "ارتباط با ما", selectedIcon: <FaUser className='text-[1rem]' />, href: `/contact` },
+    {id: 1, label: "خانه", selectedIcon: <TiHome className='text-[1rem]' />, href: `/${lang}/`},
+    {id: 2, label: "نمونه کار", selectedIcon: <FaTreeCity className='text-[1rem]' />, href: `/${lang}/samples`},
+    {id: 3, label: "خدمات", selectedIcon: <FaBookmark className='text-[1rem]' />, href: `/${lang}/services`},
+    {id: 4, label: "درباره ما", selectedIcon: <MdTravelExplore className='text-[1rem]' />, href: `/${lang}/about` },
+    {id: 5, label: "ارتباط با ما", selectedIcon: <FaUser className='text-[1rem]' />, href: `/${lang}/contact` },
   ]
-
-  const [screenWidth, setScreenWidth] = useState<number>(
-      typeof window !== 'undefined' ? window.innerWidth : 0
-  );
 
   const { scale, progress } = useScrollProgress({
       container: "window",
@@ -45,7 +38,7 @@ const TopNavbar: React.FC = () => {
           <ul className='flex items-center gap-4 max-md:hidden'>
             {navLinks.map((navLink) => (
               <Link href={navLink.href} className='flex items-center' key={navLink.id}>
-                <p className={`${isActive(navLink.href) ? "text-black" : "text-neutral-600"} text-[0.9rem] font-medium`}>{navLink.label}</p>
+                <p className={`${current === navLink.href ? "text-(--theme)" : "text-neutral-600"} text-[0.9rem] font-medium`}>{navLink.label}</p>
               </Link>
             ))}
           </ul>

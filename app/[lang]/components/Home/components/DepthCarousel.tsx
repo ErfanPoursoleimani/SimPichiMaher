@@ -1,13 +1,13 @@
 import { useCarousel2 } from "@/hooks/useCarousel2";
+import { ChevronLeft, ChevronRight} from "lucide-react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 export default function CarouselDemo({cardData}: {cardData: {id: number, cropedBg: string, fullBg: string, label: string, description: string}[]}) {
 
   const {
-    activeIndex,
+/*     activeIndex,
     isAutoPlaying,
-    toggleAutoPlay,
+    toggleAutoPlay, */
     getCarouselProps,
     getContainerProps,
     getItemProps,

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --theme: #00597c;
+  --theme: #007c6b;
 }
 
 body {
@@ -13,16 +13,6 @@ body {
 .homepage-main-decor {
   animation: homepage-main-decor 4s ease  infinite;
   transition: 4s ease;
-}
-
-@keyframes homepage-main-decor {
-  0% {
-
-    background: linear-gradient(to right, #01f7ff, #ae00ff);
-  }
-  100% {
-    background: linear-gradient(to right, #ff6b6b, #4ecdc4);
-  }
 }
 
 .scrollbar-hide {

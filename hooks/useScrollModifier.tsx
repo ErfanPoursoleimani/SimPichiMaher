@@ -1,19 +1,21 @@
 import { useEffect } from 'react'
 
-const useScrollModifier = (ref: React.RefObject<HTMLDivElement>, inView: boolean, config: {landingPosition: "start" | "end" | "center" | "nearest"} = {landingPosition: "start"}) => {
+const useScrollModifier = (
+    ref: React.RefObject<HTMLDivElement>, 
+    inView: boolean, 
+    config: {landingPosition: "start" | "end" | "center" | "nearest"} = {landingPosition: "start"}
+) => {
+    const { landingPosition } = config
 
     useEffect(() => {
         const element = ref.current
-        if(!element)
-            return
-        const scrollToSection = () => {
-            element.scrollIntoView({ 
-                behavior: 'smooth',
-                block: config.landingPosition
-            });
-        }
-        inView === true ? scrollToSection() : null
-    }, [inView])
+        if(!element || !inView) return
+        
+        element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: landingPosition
+        })
+    }, [inView, landingPosition, ref])
 }
 
 export default useScrollModifier
