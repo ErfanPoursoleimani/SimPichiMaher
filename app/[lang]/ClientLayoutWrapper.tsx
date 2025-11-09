@@ -19,8 +19,8 @@ export default function ClientLayoutWrapper({ children }: ClientLayoutWrapperPro
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 2,
-      touchMultiplier: 2,
+      wheelMultiplier: 3,
+      touchMultiplier: 3,
       infinite: false,
     });
 

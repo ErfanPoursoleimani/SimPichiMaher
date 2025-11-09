@@ -25,7 +25,7 @@ export default function CarouselDemo({cardData}: {cardData: {id: number, cropedB
   return (
     <div className="min-w-screen flex items-center justify-center p-2">
       <div className="w-full overflow-hidden">
-        <div {...getCarouselProps()} className="relative h-[500px] mb-5 outline-none">
+        <div {...getCarouselProps()} className="relative h-[400px] md:h-[500px] outline-none">
           <div {...getContainerProps()}>
             <div className="absolute inset-0 flex items-center justify-center">
               {cardData.map((item, index) => (

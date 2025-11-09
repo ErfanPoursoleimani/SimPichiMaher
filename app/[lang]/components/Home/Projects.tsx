@@ -63,13 +63,6 @@ const Projects = () => {
         typeof window !== 'undefined' ? window.innerWidth : 0
     );
     
-/*     const { ref: refSection1, inView: section1InView } = useInView({ threshold: 0, triggerOnce: false, rootMargin: "0px" });
-    useScrollModifier(refSection1, section1InView, {landingPosition: "end"})
-    const { ref: refSection2, inView: section2InView } = useInView({ threshold: 0, triggerOnce: false, rootMargin: "0px" });
-    useScrollModifier(refSection2, section2InView, {landingPosition: "end"})
-    const { ref: refSection3, inView: section3InView } = useInView({ threshold: 0, triggerOnce: false, rootMargin: "0px" });
-    useScrollModifier(refSection3, section3InView, {landingPosition: "start"}) */
-    
     useEffect(() => {
         const handleResize = () => {
             setScreenWidth(window.innerWidth);
@@ -88,12 +81,13 @@ const Projects = () => {
     
 
   return (
-    <div className="relative top-[100vh] w-full flex flex-col items-center">
-        <div className="sticky top-0 min-h-screen bg-white flex flex-col items-center justify-center">
-            <h2 className="text-[60px] font-extrabold text-(--theme)">نمونه کار ها</h2>
-            <AnimatedBox animation="slideUp" config={{delay: 0.4}}>
+    <div className="relative w-full min-h-max">
+        <div className="sticky top-0 min-h-screen bg-[url(/images/tools-illustration.jpg)] bg-cover flex flex-col items-center justify-center gap-20">
+            <div className="absolute top-0 left-0 -z-1 w-full h-full bg-white/95"></div>
+            <AnimatedBox animation="slideUp" config={{delay: 0.2}}>
                 <DepthCarousel cardData={cardData}/>
             </AnimatedBox>
+            <h2 className="text-[60px] font-extrabold text-(--theme)">نمونه کار </h2>
         </div>
         <div className="min-h-max w-full mt-70">
             <div /* ref={refSection1} */ className="sticky top-0 min-h-[300vh] max-md:min-h-[200vh] w-full">
@@ -115,8 +109,8 @@ const Projects = () => {
                     <div
                         className={`relative w-screen h-screen backdrop-blur-2xl bg-radial bg-(--theme)`}
                         style={{
-                            WebkitMaskImage: `radial-gradient(circle at center, transparent ${1150*mainScale - 1270}px, black ${1150*mainScale - 1270}px)`,
-                            maskImage: `radial-gradient(circle at center, transparent ${1150*mainScale - 1270}px, black ${1150*mainScale - 1270}px)`,
+                            WebkitMaskImage: `radial-gradient(circle at center, transparent ${1150*mainScale - 1100}px, black ${1150*mainScale - 1100}px)`,
+                            maskImage: `radial-gradient(circle at center, transparent ${1150*mainScale - 1100}px, black ${1150*mainScale - 1100}px)`,
                             WebkitMaskRepeat: 'no-repeat',
                             maskRepeat: 'no-repeat',
                         }}
@@ -168,7 +162,7 @@ const Projects = () => {
                         <div className="bg-white/0 w-full min-h-full absolute inset-0"></div>
                         <div className="text-center mb-16 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col gap-5">
                             <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                                مهندس میلاد غضنفری
+                                سیم پیچی ماهر
                             </h1>
                             <p className="text-[1rem]">
                                 آدرس: دولت آباد، خیابان سید زاده، مجتمع آباده، پلاک 112
@@ -178,8 +172,8 @@ const Projects = () => {
                     <div
                         className={`relative w-screen h-screen backdrop-blur-2xl bg-radial bg-(--theme)`}
                         style={{
-                            WebkitMaskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5850}px, black ${1110*mainScale - 5850}px)`,
-                            maskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5850}px, black ${1110*mainScale - 5850}px)`,
+                            WebkitMaskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5310}px, black ${1110*mainScale - 5310}px)`,
+                            maskImage: `radial-gradient(circle at center, transparent ${1110*mainScale - 5310}px, black ${1110*mainScale - 5310}px)`,
                             WebkitMaskRepeat: 'no-repeat',
                             maskRepeat: 'no-repeat',
                         }}
@@ -188,8 +182,22 @@ const Projects = () => {
                     </div>
                 </div>
             </div>
-            <div /* ref={refSection3} */ className="sticky bg-white top-[300vh] min-h-screen w-full flex flex-col items-center justify-center">
-
+            <div /* ref={refSection3} */ className="sticky bg-[url(/images/mechanic.jpg)] bg-cover top-[300vh] min-h-screen w-full flex flex-col items-center justify-center">
+                <div className="absolute top-0 left-0 w-full h-full bg-white/90 -z-1"></div>
+                <div className="max-w-200 p-5 text-center space-y-5">
+                    <h1 className="text-5xl max-md:text-4xl max-sm:text-3xl font-bold">مهندس میلاد غضنفری</h1>
+                    <AnimatedBox animation="slideRight">
+                        <ul className="space-y-3 font-medium text-2xl max-md:text-sm">
+                            <li>فارغ التحصیل رشته مهندسی برق</li>
+                            <li>دارای بیش از 10 مدرک فنی معتبر</li>
+                            <li>بیش از 20 سال سابقه کار</li>
+                            <li></li>
+                        </ul>
+                    </ AnimatedBox>
+                </div>
+{/*                 <div className="flex-1/3 rounded-full overflow-hidden max-w-60 max-h-max">
+                    <img className="w-full h-full" src="/images/motor2-removebg-preview.png" alt="" />
+                </div> */}
             </div>
         </div>
     </div>
